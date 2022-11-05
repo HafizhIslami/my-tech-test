@@ -36,16 +36,11 @@ export default function HomeScreen({ navigation }) {
       .catch((err) => console.log(err));
   }, []);
 
-  const Item = ({ wallet }) => (
-    <View style={styles.item}>
-      <Image>{wallet.image_url}</Image>
-      <Text style={{ fontSize: 20 }}>{wallet.name}</Text>
-    </View>
-  );
-
   return (
     <>
-      <Text style={{ fontSize: 50 }}>Collections Item</Text>
+      <Text style={{ fontSize: 50, textAlign: "center" }}>
+        Collections Item
+      </Text>
       <ScrollView style={{ padding: 5 }}>
         {loading ? (
           <Loading />
