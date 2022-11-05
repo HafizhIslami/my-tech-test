@@ -3,7 +3,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import DetailScreen from "./screens/DetailScreen";
 import HomeScreen from "./screens/HomeScreen";
@@ -18,15 +18,14 @@ const Navigator = () => {
         name="MenuScreen"
         component={HomeScreen}
         options={{
-          title: "Menu",
-          headerStyle: { backgroundColor: "rgb(128, 72, 156)" },
+          headerShown: false,
         }}
       />
       <Stack.Screen
-        name="Detail"
+        name="DetailScreen"
         component={DetailScreen}
         options={{
-          headerStyle: { backgroundColor: "rgba(254,185,19,1)" },
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
@@ -36,7 +35,8 @@ const Navigator = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <StatusBar style="auto" />
+      {/* <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -52,17 +52,21 @@ export default function App() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerStyle: { backgroundColor: "rgba(254,185,19,1)" } }}
-      />
-      <Tab.Screen
-        name="Detail"
-        component={Navigator}
-        options={{ headerShown: false }}
-      />
-      </Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerStyle: { backgroundColor: "rgba(254,185,19,1)" },
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="Detail"
+          component={Navigator}
+          options={{ headerShown: false }}
+        />
+      </Tab.Navigator> */}
+      <Navigator/>
     </NavigationContainer>
   );
 }
