@@ -3,44 +3,50 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import DetailScreen from "./screens/DetailScreen";
 import HomeScreen from "./screens/HomeScreen";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="MenuScreen"
-        component={HomeScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="DetailScreen"
-        component={DetailScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
+    // <SafeAreaView style={styles.container}>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="MenuScreen"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="DetailScreen"
+          component={DetailScreen}
+          options={{
+            // headerShown: false,
+            headerTitle: "",
+            headerTransparent: true,
+          }}
+        />
+      </Stack.Navigator>
+    // {/* </SafeAreaView> */}
   );
 };
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      {/* <Tab.Navigator
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        {/* <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
+            
             if (route.name === "Home") {
               iconName = focused ? "home-outline" : "home-sharp";
             } else if (route.name === "Detail") {
@@ -51,9 +57,9 @@ export default function App() {
           tabBarActiveTintColor: "rgba(254,185,19,1)",
           tabBarInactiveTintColor: "gray",
         })}
-      >
+        >
         <Tab.Screen
-          name="Home"
+        name="Home"
           component={HomeScreen}
           options={{
             headerStyle: { backgroundColor: "rgba(254,185,19,1)" },
@@ -61,13 +67,14 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="Detail"
-          component={Navigator}
-          options={{ headerShown: false }}
+        name="Detail"
+        component={Navigator}
+        options={{ headerShown: false }}
         />
       </Tab.Navigator> */}
-      <Navigator/>
-    </NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
