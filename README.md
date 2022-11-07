@@ -1,5 +1,8 @@
 # my-tech-test
 
+### Demonstration video
+https://www.loom.com/share/d68a7c15a7a746719a7991e54aec92e1
+
 ### How to run the app
 
 - Open directory ../my-tech-test/NFT-App
