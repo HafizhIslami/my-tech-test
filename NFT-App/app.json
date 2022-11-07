@@ -8,6 +8,11 @@
     ],
     "android": {
       "package": "com.hafizh1661.NFTApp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ec5688d3-4763-424b-88f8-d022019cf52e"
+      }
     }
   }
 }

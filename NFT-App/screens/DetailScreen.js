@@ -20,7 +20,6 @@ import Loading from "../components/Loading";
 const screen = Dimensions.get("screen");
 
 export default function DetailScreen({ route }) {
-  console.log(route.params);
   const { detailId, collectionGroup } = route.params;
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState(collectionGroup);
@@ -115,10 +114,11 @@ export default function DetailScreen({ route }) {
                 <View
                   style={{
                     flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginBottom: 5,
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    // marginBottom: 5,
                     paddingHorizontal: 5,
+                    flexDirection: "row",
                   }}
                 >
                   {decimalNum(detail.one_day_change) < 0 ? (
@@ -127,7 +127,7 @@ export default function DetailScreen({ route }) {
                       style={{
                         width: screen.width * 0.037,
                         height: screen.width * 0.025,
-                        marginLeft: -(screen.width * 0.1),
+                        marginLeft: -20,
                       }}
                     />
                   ) : (
@@ -137,7 +137,7 @@ export default function DetailScreen({ route }) {
                         width: screen.width * 0.035,
                         height: screen.width * 0.038,
                         transform: [{ rotate: "90deg" }],
-                        marginLeft: -(screen.width * 0.1),
+                        marginLeft: -20,
                       }}
                     />
                   )}
@@ -147,8 +147,8 @@ export default function DetailScreen({ route }) {
                       opacity: 0.6,
                       fontWeight: "500",
                       textAlign: "center",
-                      position: "absolute",
-                      marginLeft: screen.width * 0.06,
+                      position: "relative",
+                      marginRight: -20,
                     }}
                   >
                     {decimalNum(detail.one_day_change)}

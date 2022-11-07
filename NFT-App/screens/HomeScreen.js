@@ -16,7 +16,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Loading from "../components/Loading";
 import DetailScreen from "./DetailScreen";
 
-const screen = Dimensions.get("screen");
+const screen = Dimensions.get("window");
 
 export default function HomeScreen({ navigation }) {
   const [collections, setCollections] = useState([]);
@@ -32,7 +32,6 @@ export default function HomeScreen({ navigation }) {
       .then((data) => {
         setCollections(data);
       })
-      .finally(() => console.log(collections))
       .catch((err) => console.log(err));
   };
 
@@ -107,49 +106,51 @@ export default function HomeScreen({ navigation }) {
                     })
                   }
                 >
-                  <ImageBackground
-                    source={{ uri: item.banner_image_url }}
-                    style={styles.imgBackground}
-                  >
-                    <Image
-                      source={{ uri: item.image_url }}
-                      style={styles.imgProfile}
-                    />
-                    <View style={styles.nameContainer}>
-                      <Text
-                        style={{
-                          fontSize: screen.width * 0.05,
-                          marginVertical: 5,
-                          opacity: 0.9,
-                          textAlign: "center",
-                          fontWeight: "500",
-                        }}
-                      >
-                        {item.name}
-                      </Text>
-                      <View
-                        style={{
-                          flex: 1,
-                          justifyContent: "center",
-                          alignItems: "center",
-                          marginBottom: 5,
-                          paddingHorizontal: 5,
-                        }}
-                      >
-                        <Image
-                          source={require("../src/image/nft-token.png")}
+                  <View>
+                    <ImageBackground
+                      source={{ uri: item.banner_image_url }}
+                      style={styles.imgBackground}
+                    >
+                      <View style={styles.nameContainer}>
+                      <Image
+                        source={{ uri: item.image_url }}
+                        style={styles.imgProfile}
+                      />
+                        <Text
                           style={{
-                            width: screen.width * 0.05,
-                            height: screen.width * 0.05,
-                            marginLeft: -(screen.width * 0.05),
+                            fontSize: screen.width * 0.05,
+                            opacity: 0.9,
+                            textAlign: "center",
+                            fontWeight: "500",
                           }}
-                        />
-                        <Text style={styles.tokenOwned}>
-                          {item.group.length}
+                        >
+                          {item.name}
                         </Text>
+                        <View
+                          style={{
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginBottom: 5,
+                            paddingHorizontal: 5,
+                          }}
+                        >
+                          <Image
+                            source={require("../src/image/nft-token.png")}
+                            style={{
+                              width: screen.width * 0.05,
+                              height: screen.width * 0.05,
+                              marginLeft: -25,
+                            }}
+                          />
+                          <Text style={styles.tokenOwned}>
+                            {'      '}
+                            {item.group.length}
+                          </Text>
+                        </View>
                       </View>
-                    </View>
-                  </ImageBackground>
+                    </ImageBackground>
+                  </View>
                 </TouchableOpacity>
               )}
               keyExtractor={(wallet) => wallet.id}
@@ -212,6 +213,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "500",
     position: "absolute",
-    marginLeft: screen.width * 0.06,
   },
 });
