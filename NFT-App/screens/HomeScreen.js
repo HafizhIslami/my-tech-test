@@ -17,7 +17,6 @@ import Loading from "../components/Loading";
 import DetailScreen from "./DetailScreen";
 
 const screen = Dimensions.get("screen");
-// const screen = Dimensions.get("screen");
 
 export default function HomeScreen({ navigation }) {
   const [collections, setCollections] = useState([]);
@@ -91,9 +90,6 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <>
-      {/* <Text style={{ fontSize: 50, textAlign: "center", opacity: 0.6 }}>
-        Collections Item
-      </Text> */}
       <SafeAreaView style={styles.container}>
         <ScrollView style={{ padding: 5 }}>
           {loading ? (
@@ -113,36 +109,13 @@ export default function HomeScreen({ navigation }) {
                 >
                   <ImageBackground
                     source={{ uri: item.banner_image_url }}
-                    style={{
-                      height: screen.height * 0.2,
-                      justifyContent: "center",
-                    }}
+                    style={styles.imgBackground}
                   >
                     <Image
                       source={{ uri: item.image_url }}
-                      style={{
-                        width: screen.width * 0.25,
-                        height: screen.width * 0.25,
-                        alignSelf: "center",
-                        borderRadius: 10,
-                        borderColor: "#F2F2F2",
-                        borderWidth: 4,
-                        opacity: 2,
-                      }}
+                      style={styles.imgProfile}
                     />
-                    <View
-                      style={{
-                        backgroundColor: "#F2F2F2",
-                        width: "auto",
-                        alignSelf: "center",
-                        alignContent: "center",
-                        borderRadius: 10,
-                        opacity: 0.8,
-                        marginTop: 5,
-                        paddingHorizontal: 5,
-                        minWidth: screen.width * 0.3,
-                      }}
-                    >
+                    <View style={styles.nameContainer}>
                       <Text
                         style={{
                           fontSize: screen.width * 0.05,
@@ -160,7 +133,7 @@ export default function HomeScreen({ navigation }) {
                           justifyContent: "center",
                           alignItems: "center",
                           marginBottom: 5,
-                          paddingHorizontal: 5
+                          paddingHorizontal: 5,
                         }}
                       >
                         <Image
@@ -171,16 +144,7 @@ export default function HomeScreen({ navigation }) {
                             marginLeft: -(screen.width * 0.05),
                           }}
                         />
-                        <Text
-                          style={{
-                            fontSize: screen.width * 0.05,
-                            opacity: 0.9,
-                            textAlign: "center",
-                            fontWeight: "500",
-                            position: "absolute",
-                            marginLeft: screen.width * 0.06,
-                          }}
-                        >
+                        <Text style={styles.tokenOwned}>
                           {item.group.length}
                         </Text>
                       </View>
@@ -189,12 +153,8 @@ export default function HomeScreen({ navigation }) {
                 </TouchableOpacity>
               )}
               keyExtractor={(wallet) => wallet.id}
-              // numColumns={3}
-
-              // columnWrapperStyle={{ justifyContent: "space-evenly" }}
               style={{
-                margin: screen.width * 0.1,
-                // justifyContent: "space-evenly",
+                margin: screen.width * 0.05,
                 alignContent: "center",
               }}
             />
@@ -221,5 +181,37 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+  },
+  imgBackground: {
+    height: screen.height * 0.2,
+    justifyContent: "center",
+  },
+  imgProfile: {
+    width: screen.width * 0.25,
+    height: screen.width * 0.25,
+    alignSelf: "center",
+    borderRadius: 10,
+    borderColor: "#F2F2F2",
+    borderWidth: 4,
+    opacity: 2,
+  },
+  nameContainer: {
+    backgroundColor: "#F2F2F2",
+    width: "auto",
+    alignSelf: "center",
+    alignContent: "center",
+    borderRadius: 10,
+    opacity: 0.8,
+    marginTop: 5,
+    paddingHorizontal: 5,
+    minWidth: screen.width * 0.3,
+  },
+  tokenOwned: {
+    fontSize: screen.width * 0.05,
+    opacity: 0.9,
+    textAlign: "center",
+    fontWeight: "500",
+    position: "absolute",
+    marginLeft: screen.width * 0.06,
   },
 });

@@ -45,7 +45,6 @@ export default function DetailScreen({ route }) {
     fetchCollectionStats(detailId);
   }, []);
 
-  const bgColor = "hsl(" + Math.floor(Math.random() * 361) + ", 12%, 92%)";
   const chartColor = "hsl(" + Math.floor(Math.random() * 361) + ", 92%, 43%)";
 
   const decimalNum = (num) => {
@@ -100,20 +99,7 @@ export default function DetailScreen({ route }) {
                 </Text>
               </View>
             </ImageBackground>
-            <View
-              style={{
-                borderWidth: 2,
-                backgroundColor: bgColor,
-                borderRadius: 10,
-                borderColor: "white",
-                marginVertical: screen.height * 0.03,
-                width: screen.width * 0.9,
-                alignSelf: "center",
-                flexDirection: "row",
-                padding: 10,
-                justifyContent: "space-evenly",
-              }}
-            >
+            <View style={styles.detailContainer}>
               <View>
                 <Text style={styles.text}>TOKEN</Text>
                 <Text style={styles.text}>{detail.group.length}</Text>
@@ -192,16 +178,15 @@ export default function DetailScreen({ route }) {
                     paddingLeft: 0,
                   },
 
-                  // barPercentage: 0.5,
                   propsForBackgroundLines: {
                     stroke: "#ffffff",
                   },
                 }}
                 fromZero
                 bezier
-                withInnerLines={false} // hide the grid behind chart
-                withHorizontalLabels={false} // hide horizontal labels
-                withOuterLines={false} // hide lines next to labels
+                withInnerLines={false}
+                withHorizontalLabels={false}
+                withOuterLines={false}
                 withDots={false}
                 style={styles.lineChart}
               />
@@ -214,28 +199,9 @@ export default function DetailScreen({ route }) {
                   <TouchableOpacity style={{ padding: 5 }}>
                     <ImageBackground
                       source={{ uri: item.image_url }}
-                      style={{
-                        width: screen.width * 0.35,
-                        height: screen.width * 0.35,
-                        alignSelf: "center",
-                        borderRadius: 10,
-                        borderColor: "#ffffff",
-                        borderWidth: 4,
-                      }}
+                      style={styles.imgBackground}
                     >
-                      <Text
-                        style={{
-                          fontSize: screen.width * 0.05,
-                          opacity: 0.7,
-                          fontWeight: "bold",
-                          textAlign: "center",
-                          padding: 5,
-                          alignSelf: "baseline",
-                          backgroundColor: "#ffffff",
-                        }}
-                      >
-                        {item.token_id}
-                      </Text>
+                      <Text style={styles.tokenId}>{item.token_id}</Text>
                     </ImageBackground>
                   </TouchableOpacity>
                 )}
@@ -280,5 +246,34 @@ const styles = StyleSheet.create({
     opacity: 0.6,
     fontWeight: "500",
     textAlign: "center",
+  },
+  tokenId: {
+    fontSize: screen.width * 0.05,
+    opacity: 0.7,
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: 5,
+    alignSelf: "baseline",
+    backgroundColor: "#ffffff",
+  },
+  imgBackground: {
+    width: screen.width * 0.35,
+    height: screen.width * 0.35,
+    alignSelf: "center",
+    borderRadius: 10,
+    borderColor: "#ffffff",
+    borderWidth: 4,
+  },
+  detailContainer: {
+    borderWidth: 2,
+    backgroundColor: `hsl(${Math.floor(Math.random() * 361)}, 12%, 92%)`,
+    borderRadius: 10,
+    borderColor: "white",
+    marginVertical: screen.height * 0.03,
+    width: screen.width * 0.9,
+    alignSelf: "center",
+    flexDirection: "row",
+    padding: 10,
+    justifyContent: "space-evenly",
   },
 });
