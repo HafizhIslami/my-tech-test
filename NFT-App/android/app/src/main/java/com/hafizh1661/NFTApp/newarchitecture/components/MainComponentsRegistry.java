@@ -1,4 +1,4 @@
-package com.nftapp.newarchitecture.components;
+package com.hafizh1661.NFTApp.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

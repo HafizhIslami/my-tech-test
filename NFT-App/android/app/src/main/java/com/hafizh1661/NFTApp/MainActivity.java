@@ -1,4 +1,4 @@
-package com.nftapp;
+package com.hafizh1661.NFTApp;
 
 import android.os.Build;
 import android.os.Bundle;

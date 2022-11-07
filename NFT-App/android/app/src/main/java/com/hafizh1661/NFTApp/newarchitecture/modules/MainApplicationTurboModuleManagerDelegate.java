@@ -1,4 +1,4 @@
-package com.nftapp.newarchitecture.modules;
+package com.hafizh1661.NFTApp.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
